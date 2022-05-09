@@ -1,0 +1,27 @@
+FROM node:12.18-alpine
+# ENV NODE_ENV=production
+WORKDIR /app
+COPY ["package.json", "./"]
+RUN npm install
+RUN npm install node-gyp -g
+RUN npm install nodemon -g
+COPY . .
+EXPOSE 8080
+CMD ["npm","run","dev"]
+
+# FROM node:boron
+
+# # Create app directory
+# RUN mkdir -p /usr/src/app
+# WORKDIR /usr/src/app
+
+# # Install app dependencies
+# COPY package.json /usr/src/app/
+# RUN npm install
+
+# # Bundle app source
+# COPY . /usr/src/app
+
+# EXPOSE 8080
+# # CMD [ "npm", "start" ]
+# CMD ["node", "index.js"]
